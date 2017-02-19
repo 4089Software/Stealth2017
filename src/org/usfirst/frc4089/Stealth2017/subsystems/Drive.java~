@@ -13,6 +13,8 @@ package org.usfirst.frc4089.Stealth2017.subsystems;
 
 import org.usfirst.frc4089.Stealth2017.RobotMap;
 import org.usfirst.frc4089.Stealth2017.commands.*;
+
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
@@ -52,6 +54,15 @@ public class Drive extends Subsystem {
 
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new UserDrive());
     }
+    public void operatorDrive(Joystick DriveStick){
+    	arcDrive(DriveStick.getRawAxis(1), DriveStick.getRawAxis(2));
+    	
+    }
+	private void arcDrive(double turn, double pow) {
+		robotDrive41.arcadeDrive(turn, pow);
+		
+	}
 }
 

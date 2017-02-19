@@ -34,7 +34,7 @@ public class Robot extends IterativeRobot {
     public static Drive drive;
     public static Collector collector;
     public static Shooter shooter;
-    public static Ellevator ellevator;
+    public static Elevator ellevator;
     public static Climber climber;
     public static Utilities utilities;
 
@@ -50,7 +50,7 @@ public class Robot extends IterativeRobot {
         drive = new Drive();
         collector = new Collector();
         shooter = new Shooter();
-        ellevator = new Ellevator();
+        ellevator = new Elevator();
         climber = new Climber();
         utilities = new Utilities();
 

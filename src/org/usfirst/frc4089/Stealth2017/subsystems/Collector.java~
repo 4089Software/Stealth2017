@@ -46,8 +46,9 @@ public class Collector extends Subsystem {
     	
     }
     public void runCollector(){
-		
+    	motorBC.set(Constants.collectorSpeed);
 	}
     public void stopCollector(){
+    	motorBC.set(0);
 	}
 }

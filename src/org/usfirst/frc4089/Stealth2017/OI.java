@@ -55,8 +55,8 @@ public class OI {
     public Joystick driveStick;
     public JoystickButton runShooter;
     public JoystickButton stopShooter;
-    public JoystickButton runEllevator;
-    public JoystickButton stopEllevator;
+    public JoystickButton runElevator;
+    public JoystickButton stopElevator;
     public JoystickButton extendCollector;
     public JoystickButton retractCollector;
     public JoystickButton runCollector;
@@ -84,10 +84,10 @@ public class OI {
         retractCollector.whenPressed(new CollectorIn());
         extendCollector = new JoystickButton(utilityStick, 3);
         extendCollector.whenPressed(new CollectorOut());
-        stopEllevator = new JoystickButton(utilityStick, 7);
-        stopEllevator.whenPressed(new EllevatorStop());
-        runEllevator = new JoystickButton(utilityStick, 6);
-        runEllevator.whenPressed(new EllevatorRun());
+        stopElevator = new JoystickButton(utilityStick, 7);
+        stopElevator.whenPressed(new EllevatorStop());
+        runElevator = new JoystickButton(utilityStick, 6);
+        runElevator.whenPressed(new EllevatorRun());
         stopShooter = new JoystickButton(utilityStick, 10);
         stopShooter.whenPressed(new ShooterStop());
         runShooter = new JoystickButton(utilityStick, 11);

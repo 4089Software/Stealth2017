@@ -57,7 +57,7 @@ public class Drive extends Subsystem {
     	setDefaultCommand(new UserDrive());
     }
     public void operatorDrive(Joystick DriveStick){
-    	arcDrive(DriveStick.getRawAxis(1), DriveStick.getRawAxis(2));
+    	arcDrive(DriveStick.getRawAxis(1), -DriveStick.getRawAxis(2));
     	
     }
 	private void arcDrive(double turn, double pow) {
