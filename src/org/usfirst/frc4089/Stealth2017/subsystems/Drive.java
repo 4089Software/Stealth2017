@@ -64,5 +64,29 @@ public class Drive extends Subsystem {
 		robotDrive41.arcadeDrive(turn, pow);
 		
 	}
+	public void driveF(){
+		rightMotor1.set(1);
+		rightMotor2.set(1);
+		leftMotor1.set(1);
+		leftMotor2.set(1);
+	}
+	public void driveB(){
+		rightMotor1.set(1);
+		rightMotor2.set(1);
+		leftMotor1.set(1);
+		leftMotor2.set(1);
+	}
+	public void driveR(){
+		rightMotor1.set(1);
+		rightMotor2.set(1);
+		leftMotor1.set(-1);
+		leftMotor2.set(-1);
+	}
+	public void driveL(){
+		rightMotor1.set(-1);
+		rightMotor2.set(-1);
+		leftMotor1.set(1);
+		leftMotor2.set(1);
+	}
 }
 

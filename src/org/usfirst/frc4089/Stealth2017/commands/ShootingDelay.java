@@ -10,6 +10,7 @@
 
 
 package org.usfirst.frc4089.Stealth2017.commands;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc4089.Stealth2017.Robot;
 
@@ -40,11 +41,12 @@ public class ShootingDelay extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return !Robot.oi.utilityStick.getRawButton(1);
     }
 
     // Called once after isFinished returns true
