@@ -51,11 +51,14 @@ public class Shooter extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
     }
-    public void spinShooter(){
-    	shooterMotor.set(Constants.shooterSpeed);
-    }
     public void stopShooter(){
     	shooterMotor.set(0);
+    }
+    public void spinShooter(){
+    	shooterMotor.set(-Constants.shooterSpeed);    	
+    }
+    public void reverseShooter(){
+    	shooterMotor.set( Constants.shooterSpeed);      	
     }
 }
 

@@ -11,6 +11,7 @@
 
 package org.usfirst.frc4089.Stealth2017.subsystems;
 
+import org.usfirst.frc4089.Stealth2017.Constants;
 import org.usfirst.frc4089.Stealth2017.RobotMap;
 import org.usfirst.frc4089.Stealth2017.commands.*;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -46,11 +47,11 @@ public class Ellevator extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
     }
-    public void ellevatorUp(){
+    public void elevatorUp(){
     	ellevatorMotor.set(Constants.ellevatorSpeedUp);
     }
-    public void ellevatorDown(){
-    	ellevatorMotor.set(Constants.ellevatorSpeedDown);
+    public void elevatorDown(){
+    	ellevatorMotor.set(0);
     }
 }
 

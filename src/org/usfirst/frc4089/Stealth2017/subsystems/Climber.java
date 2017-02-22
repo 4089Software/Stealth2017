@@ -11,6 +11,7 @@
 
 package org.usfirst.frc4089.Stealth2017.subsystems;
 
+import org.usfirst.frc4089.Stealth2017.Constants;
 import org.usfirst.frc4089.Stealth2017.RobotMap;
 import org.usfirst.frc4089.Stealth2017.commands.*;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -48,16 +49,16 @@ public class Climber extends Subsystem {
         // setDefaultCommand(new MySpecialCommand());
     }
     public void climbUp(){
-    	climberMotor1.set(1);
-    	climberMotor2.set(-1);
+    	climberMotor1.set(Constants.climber1Speed);
+    	climberMotor2.set(Constants.climber2Speed);
     }
     public void climbDown(){
-    	climberMotor1.set(-1);
-    	climberMotor2.set(1);
+    	climberMotor1.set(-Constants.climber1Speed);
+    	climberMotor2.set(-Constants.climber2Speed);
     }
     public void stopClimb(){
-    	climberMotor1.set(-1);
-    	climberMotor2.set(1);    	
+    	climberMotor1.set(0);
+    	climberMotor2.set(0);    	
     }
 }
 
