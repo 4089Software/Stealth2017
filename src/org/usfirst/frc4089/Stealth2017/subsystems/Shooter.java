@@ -58,7 +58,7 @@ public class Shooter extends Subsystem {
     	shooterMotor.set(-Constants.shooterSpeed);    	
     }
     public void reverseShooter(){
-    	shooterMotor.set(Constants.shooterSpeed);      	
+    	shooterMotor.set( Constants.shooterSpeed);      	
     }
 }
 

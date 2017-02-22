@@ -7,6 +7,8 @@ public class Constants {
 	public static final double shooterSpeed = 1;
 	public static final double climber1Speed = 1;
 	public static final double climber2Speed = 1;
+	public static final double rightSpeed = 1;
+	public static final double leftSpeed = .9;
 	
 	//Motor IDs
 	public static final int rightMotor1SpeedControl = 6;
@@ -17,6 +19,7 @@ public class Constants {
 	public static final int climbMotor2SpeedControl = 4;
 	public static final int ShooterMotorSpeedControl = 10;
 	public static final int ellevatorMotorSpeedControl = 9;
+	public static final int agitatorMotorSpeedControl = 5;
 	public static final int collectorMotorControl = 3;
 	public static final int shooterDoorPort = 1;
 }

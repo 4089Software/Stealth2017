@@ -88,5 +88,11 @@ public class Drive extends Subsystem {
 		leftMotor1.set(1);
 		leftMotor2.set(1);
 	}
+	public void debugR1(){
+		leftMotor1.set(.2);
+	}
+	public void debugR2(){
+		leftMotor2.set(.2);
+	}
 }
 
