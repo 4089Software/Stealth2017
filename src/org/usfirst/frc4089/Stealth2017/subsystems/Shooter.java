@@ -66,11 +66,11 @@ public class Shooter extends Subsystem {
     }
     public void closeOuterBarrels(){
     	RBarrelBlocker.set(1);
-    	LBarrelBlocker.set(1);
+    	LBarrelBlocker.set(0);
     }
     public void openOuterBsrrels(){
-    	RBarrelBlocker.set(0);
-    	LBarrelBlocker.set(0);
+    	RBarrelBlocker.set(0.3);
+    	LBarrelBlocker.set(0.7);
     }
 }
 

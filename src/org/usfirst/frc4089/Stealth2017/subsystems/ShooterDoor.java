@@ -15,7 +15,7 @@ public class ShooterDoor extends Subsystem{
 		
 	}
 	public void openDoor(){
-		shooterDoor.set(1);
+		shooterDoor.set(1.0);
 	}
 	public void closeDoor(){
 		shooterDoor.set(0);

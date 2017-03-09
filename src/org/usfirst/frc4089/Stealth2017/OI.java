@@ -94,11 +94,7 @@ public class OI {
         stopCollector.whenPressed(new CollectorStop());
         runCollector = new JoystickButton(utilityStick, 4);
         runCollector.whenPressed(new CollectorRun());
-        /*retractCollector = new JoystickButton(utilityStick, 2);
-        retractCollector.whenPressed(new CollectorIn());
-        extendCollector = new JoystickButton(utilityStick, 3);
-        extendCollector.whenPressed(new CollectorOut());
-        */stopEllevator = new JoystickButton(driveStick, 10);
+        stopEllevator = new JoystickButton(driveStick, 10);
         stopEllevator.whenPressed(new EllevatorStop());
         runEllevator = new JoystickButton(driveStick, 8);
         runEllevator.whenPressed(new EllevatorRun());
@@ -118,8 +114,6 @@ public class OI {
         shooterDoorClose.whenPressed(new ShooterDoorClose());
         agitate = new JoystickButton(utilityStick, 2);
         agitate.whileHeld(new Agitate());
-        //stopAgitate = new JoystickButton(utilityStick, 2);
-        //stopAgitate.whenPressed(new StopAgitate());
         blockOuterBarrels = new JoystickButton(utilityStick, 6);
         blockOuterBarrels.whenPressed(new BlockOuterBarrels());
         openOuterBarrels = new JoystickButton(utilityStick, 7);
@@ -143,9 +137,6 @@ public class OI {
         SmartDashboard.putData("ClimberUp", new ClimberUp());
         SmartDashboard.putData("ClimberDown", new ClimberDown());
         SmartDashboard.putData("DriveF", new AutoDriveFTimed());
-        SmartDashboard.putData("DriveB", new AutoDriveB());
-        SmartDashboard.putData("DriveR", new AutoDrive90R());
-        SmartDashboard.putData("DriveL", new AutoDrive90L());
         SmartDashboard.putData("UserDrive", new UserDrive());
         SmartDashboard.putData("AutomatedShooting", new AutomatedShooting());
         SmartDashboard.putData("HalfSecondDelay", new SpinUpDelay());
