@@ -1,17 +1,15 @@
 package org.usfirst.frc4089.Stealth2017.commands;
 
-import org.usfirst.frc4089.Stealth2017.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class BlockOuterBarrels extends Command {
+public class AutoDriveBDistance extends Command {
 
-	public BlockOuterBarrels() {
+    public AutoDriveBDistance() {
         // Use requires() here to declare subsystem dependencies
-    	requires(Robot.shooter);
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -20,7 +18,6 @@ public class BlockOuterBarrels extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.shooter.closeOuterBarrels();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -35,6 +32,5 @@ public class BlockOuterBarrels extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

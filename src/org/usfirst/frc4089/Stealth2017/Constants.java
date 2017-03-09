@@ -28,6 +28,7 @@ public class Constants {
 	public static final int ellevatorMotorSpeedControl = 9; //normally 9
 	public static final int agitatorMotorSpeedControl = 5;
 	public static final int collectorMotorControl = 3;
+	//servos
 	public static final int shooterDoorPort = 1;
 	public static final int RBarrelBlockerPort = 2;
 	public static final int LBarrelBlockerPort = 3;

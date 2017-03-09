@@ -17,11 +17,23 @@ public class AutoTurn extends Command {
 	private double distanceRight;
 	private double distanceLeft;
 
-    public AutoTurn(double turn) {
+    public AutoTurn(double angle, double radius) {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	requires(Robot.drive);
-    	 
+    	
+    	double radiusRight;
+    	double radiusLeft;
+    	
+    	if(angle < 0){
+    		radiusRight = radius + 2.35;
+        	radiusLeft = radius;
+    	}else{
+    		radiusRight = radius;
+        	radiusLeft = radius + 2.35;
+    	}
+    	
+    	distanceRight = (float) (2 * Math.PI * radiusRight * (angle/360));
+    	distanceLeft = (float) (2 * Math.PI * radiusLeft * (angle/360));
     }
 
     // Called just before this Command runs the first time
