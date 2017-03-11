@@ -58,16 +58,16 @@ public class Robot extends IterativeRobot {
     //public static I2C arduinoCom;
     public static DriverStation ds = DriverStation.getInstance();
     
-    static HashMap<Integer, String> sampleDict = new HashMap<Integer, String>(){/**
+    /*static HashMap<Integer, String> sampleDict = new HashMap<Integer, String>(){/**
 		 * 
-		 */
+		 *
 		private static final long serialVersionUID = 1L;
 
 	{
     	put(16, "AutonCommandName1");
     	put(17, "AutonCommandName2");
     	put(19, "EllevatorRun");
-    }};
+    }};*/
     
     private void I2CTransaction()
 	{

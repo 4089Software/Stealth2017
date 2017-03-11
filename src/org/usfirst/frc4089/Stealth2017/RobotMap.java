@@ -35,8 +35,8 @@ public class RobotMap {
     public static SpeedController driveRightMotor2;
     public static CANTalon driveLeftMotor1;
     public static SpeedController driveLeftMotor2;
-    public static Encoder rightEncoder;
-    public static Encoder leftEncoder;
+    //public static Encoder rightEncoder;
+    //public static Encoder leftEncoder;
     public static RobotDrive driveRobotDrive41;
     public static SpeedController collectorMotorBC;
     public static SpeedController shooterMotor;
@@ -61,9 +61,12 @@ public class RobotMap {
         
         driveLeftMotor1 = new CANTalon(Constants.left1MotorSpeedControl);
         LiveWindow.addActuator("Drive", "LeftMotor1", (CANTalon) driveLeftMotor1);
+        driveLeftMotor1.setInverted(true);
         
         driveLeftMotor2 = new CANTalon(Constants.left2MotorSpeedControl);
         LiveWindow.addActuator("Drive", "LeftMotor2", (CANTalon) driveLeftMotor2);
+        driveLeftMotor2.setInverted(true);
+        
         
         driveRobotDrive41 = new RobotDrive(driveLeftMotor1, driveLeftMotor2,
               driveRightMotor1, driveRightMotor2);
@@ -73,7 +76,7 @@ public class RobotMap {
         driveRobotDrive41.setSensitivity(0.25);
         driveRobotDrive41.setMaxOutput(1.0);
         
-        rightEncoder = new Encoder(0, 1, false, EncodingType.k4X);
+        /*rightEncoder = new Encoder(0, 1, false, EncodingType.k4X);
         LiveWindow.addSensor("Drive", "rightEncoder", rightEncoder);
         rightEncoder.setDistancePerPulse(0.0785398);
         rightEncoder.setPIDSourceType(PIDSourceType.kRate);
@@ -82,7 +85,7 @@ public class RobotMap {
         LiveWindow.addSensor("Drive", "leftEncoder", leftEncoder);
         leftEncoder.setDistancePerPulse(0.0785398);
         leftEncoder.setPIDSourceType(PIDSourceType.kRate);
-
+*/
         collectorMotorBC = new CANTalon(Constants.collectorMotorControl);
         LiveWindow.addActuator("Collector", "MotorBC", (CANTalon) collectorMotorBC);
         

@@ -68,18 +68,22 @@ public class AutoDriveDistance extends Command {
     	//if(timeSinceInitialized() < 3000){
     	System.out.println("preauto??");
 	    if(Robot.stopAuto = true){System.out.println("exit"); return;}	
-    	errorLeft = distanceLeft - RobotMap.driveLeftMotor1.getEncPosition();
-	    	errorRight = distanceRight - RobotMap.driveRightMotor1.getEncPosition();
-	    	errorAvg = (errorLeft + errorRight)/2;
-	    	System.out.println("AUTO");
-	    	if (Constants.defaultAutoSpeed * Constants.kP * errorAvg >= Constants.defaultAutoSpeed) {
-				Robot.drive.tankDrive(Constants.defaultAutoSpeed, Constants.defaultAutoSpeed);
+    	errorLeft = distanceLeft + RobotMap.driveLeftMotor1.getEncPosition();
+    	errorRight = distanceRight - RobotMap.driveRightMotor1.getEncPosition();
+    	errorAvg = (errorLeft + errorRight)/2;
+    	System.out.println("AUTO");
+    	System.out.print("Left Encoder:");
+    	System.out.print(RobotMap.driveLeftMotor1.getEncPosition());
+    	System.out.print("Right Encoder");
+    	System.out.println(RobotMap.driveRightMotor1.getEncPosition());
+    	if (Constants.defaultAutoSpeed * Constants.kP * errorAvg >= Constants.defaultAutoSpeed) {
+			Robot.drive.tankDrive(Constants.defaultAutoSpeed, Constants.defaultAutoSpeed);
+    	
+		} else {
+			Robot.drive.tankDrive(Constants.defaultAutoSpeed * Constants.kP * errorAvg, Constants.defaultAutoSpeed * Constants.kP * errorAvg);
+		}
 	    	
-			} else {
-				Robot.drive.tankDrive(Constants.defaultAutoSpeed * Constants.kP * errorAvg, Constants.defaultAutoSpeed * Constants.kP * errorAvg);
-			}
-	    	
-	    	SmartDashboard.putNumber("Left Encoder", Robot.drive.leftEncoder.getDistance());
+	    	//SmartDashboard.putNumber("Left Encoder", Robot.drive.leftEncoder.getDistance());
     	//}else{
     	//	end();
     	//}
