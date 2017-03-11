@@ -42,8 +42,8 @@ public class AutoTurn extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	errorLeft = distanceLeft - Robot.drive.leftEncoder.getDistance();
-    	errorRight = distanceRight - Robot.drive.rightEncoder.getDistance();
+    	errorLeft = distanceLeft - Robot.drive.leftMotor1.getEncPosition();
+    	errorRight = distanceRight - Robot.drive.rightMotor1.getEncPosition();
     	errorAvg = (errorLeft + errorRight)/2;
     	if (Constants.defaultAutoSpeed * Constants.kP * errorAvg >= Constants.defaultAutoSpeed) {
 			Robot.drive.tankDrive(Constants.defaultAutoSpeed, Constants.defaultAutoSpeed);

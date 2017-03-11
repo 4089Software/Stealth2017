@@ -12,6 +12,7 @@
 package org.usfirst.frc4089.Stealth2017.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc4089.Stealth2017.Robot;
+import org.usfirst.frc4089.Stealth2017.RobotMap;
 
 /**
  *
@@ -41,6 +42,12 @@ public class UserDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	System.out.print("Left Encoder: ");
+    	System.out.print(RobotMap.driveLeftMotor1.getEncPosition());
+    	System.out.print(" Right Encoder ");
+    	System.out.println(RobotMap.driveRightMotor1.getEncPosition());
+    	System.out.print(" Right Encoder Velocity ");
+    	System.out.println(RobotMap.driveRightMotor1.getEncVelocity());
     	Robot.drive.operatorDrive(Robot.oi.getDriveStick());
     }
 
