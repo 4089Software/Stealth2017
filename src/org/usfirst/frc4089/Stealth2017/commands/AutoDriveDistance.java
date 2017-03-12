@@ -68,8 +68,8 @@ public class AutoDriveDistance extends Command {
     	//if(timeSinceInitialized() < 3000){
     	System.out.println("preauto??");
 	    if(Robot.stopAuto = true){System.out.println("exit"); return;}	
-    	errorLeft = distanceLeft + RobotMap.driveLeftMotor1.getEncPosition();
-    	errorRight = distanceRight - RobotMap.driveRightMotor1.getEncPosition();
+    	errorLeft = distanceLeft + RobotMap.driveLeftMotor1.getEncPosition() / 1440;
+    	errorRight = distanceRight - RobotMap.driveRightMotor1.getEncPosition() / 1440;
     	errorAvg = (errorLeft + errorRight)/2;
     	System.out.println("AUTO");
     	System.out.print("Left Encoder:");
