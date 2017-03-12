@@ -50,6 +50,8 @@ public class UserDrive extends Command {
     	System.out.print(RobotMap.driveRightMotor1.getEncVelocity());
     	System.out.print(" Left Encoder Velocity ");
     	System.out.println(RobotMap.driveLeftMotor1.getEncVelocity());
+    	System.out.println("Angle" + RobotMap.digitalSPIGyro.getAngle());
+    	System.out.print("Rate" + RobotMap.digitalSPIGyro.getRate());
     	/*System.out.print(" Right Encoder Pulse Width Velocity ");
     	System.out.print(RobotMap.driveRightMotor1.getPulseWidthVelocity());
     	System.out.print(" Left Encoder Pulse Width Velocity ");
