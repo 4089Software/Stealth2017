@@ -66,7 +66,7 @@ public class Drive extends Subsystem {
     	//leftMotor1.reverseSensor(true);
     }
     public void operatorDrive(Joystick DriveStick){
-    	arcDrive(DriveStick.getRawAxis(2), DriveStick.getRawAxis(1));
+    	arcDrive(-DriveStick.getRawAxis(2), DriveStick.getRawAxis(1));
     	
     }
 	private void arcDrive(double turn, double pow) {
