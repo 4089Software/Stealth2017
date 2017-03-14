@@ -12,7 +12,8 @@ public class AutoOptions {
 			"Portcullis",
 			"Low Goal Shot",
 			"High Goal Shot (Low bar)",
-			"High Goal Shot (Stationary Middle)"};
+			"High Goal Shot (Stationary Middle)",
+			"RunMP"};
 	
 	//get each individual command, no duplicates
 	static Command getCommand(int i)

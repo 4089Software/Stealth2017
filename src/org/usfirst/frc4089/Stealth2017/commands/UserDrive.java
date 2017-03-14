@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc4089.Stealth2017.Robot;
 import org.usfirst.frc4089.Stealth2017.RobotMap;
 
+import com.ctre.CANTalon.TalonControlMode;
+
 /**
  *
  */
@@ -38,6 +40,10 @@ public class UserDrive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	/*need to exit Motion Profiling Mode when user is driving*/
+    	RobotMap.driveLeftMotor1.changeControlMode(TalonControlMode.Voltage);
+    	RobotMap.driveRightMotor1.changeControlMode(TalonControlMode.Voltage);
+    	//TODO need to MPLeft.reset();
     }
 
     // Called repeatedly when this Command is scheduled to run
