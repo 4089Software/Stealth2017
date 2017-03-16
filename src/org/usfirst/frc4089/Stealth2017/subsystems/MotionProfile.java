@@ -48,7 +48,7 @@ public class MotionProfile extends Subsystem{
 	 * reference to the talon we plan on manipulating. We will not changeMode()
 	 * or call set(), just get motion profile status and make decisions based on
 	 * motion profile.
-	 */
+	 */    
 	private CANTalon _talon;
 	/**
 	 * State machine to make sure we let enough of the motion profile stream to
@@ -70,6 +70,26 @@ public class MotionProfile extends Subsystem{
 	 */
 	private boolean _bStart = false;
 
+	private double [][] _points;
+	
+	/**
+	 * C'tor
+	 * 
+	 * @param talon
+	 *            reference to Talon object to fetch motion profile status from.
+	 */
+	public MotionProfile(CANTalon talon, double [][] points) {
+		_talon = talon;
+		/*
+		 * since our MP is 10ms per point, set the control frame rate and the
+		 * notifer to half that
+		 */
+		_talon.changeMotionControlFramePeriod(5);
+		_notifer.startPeriodic(0.005);
+		_points = points;
+	}
+	
+	
 	/**
 	 * Since the CANTalon.set() routine is mode specific, deduce what we want
 	 * the set value to be and let the calling module apply it whenever we
@@ -245,7 +265,7 @@ public class MotionProfile extends Subsystem{
 	/** Start filling the MPs to all of the involved Talons. */
 	private void startFilling() {
 		/* since this example only has one talon, just update that one */
-		startFilling(GeneratedMotionProfile.Points, GeneratedMotionProfile.kNumPoints);
+		startFilling(_points, _points.length);
 	}
 
 	private void startFilling(double[][] profile, int totalCnt) {
@@ -295,7 +315,7 @@ public class MotionProfile extends Subsystem{
 	 * Called by application to signal Talon to start the buffered MP (when it's
 	 * able to).
 	 */
-	void startMotionProfile() {
+	public void startMotionProfile() {
 		_bStart = true;
 	}
 
@@ -305,7 +325,7 @@ public class MotionProfile extends Subsystem{
 	 *         motion-profile output, 1 for enable motion-profile, 2 for hold
 	 *         current motion profile trajectory point.
 	 */
-	CANTalon.SetValueMotionProfile getSetValue() {
+	public CANTalon.SetValueMotionProfile getSetValue() {
 		return _setValue;
 	}
 

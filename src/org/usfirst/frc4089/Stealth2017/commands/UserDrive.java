@@ -48,6 +48,7 @@ public class UserDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	/*
     	System.out.print("Left Encoder: ");
     	System.out.print(-RobotMap.driveLeftMotor1.getEncPosition());
     	System.out.print(" Right Encoder ");
@@ -58,6 +59,7 @@ public class UserDrive extends Command {
     	System.out.println(RobotMap.driveLeftMotor1.getEncVelocity());
     	System.out.println("Angle" + RobotMap.digitalSPIGyro.getAngle());
     	System.out.print("Rate" + RobotMap.digitalSPIGyro.getRate());
+    	*/
     	/*System.out.print(" Right Encoder Pulse Width Velocity ");
     	System.out.print(RobotMap.driveRightMotor1.getPulseWidthVelocity());
     	System.out.print(" Left Encoder Pulse Width Velocity ");
