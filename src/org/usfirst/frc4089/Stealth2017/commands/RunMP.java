@@ -1,5 +1,6 @@
 package org.usfirst.frc4089.Stealth2017.commands;
 
+import org.usfirst.frc4089.Stealth2017.GeneratedMotionProfile;
 import org.usfirst.frc4089.Stealth2017.Robot;
 import org.usfirst.frc4089.Stealth2017.subsystems.MotionProfile;
 import org.usfirst.frc4089.Stealth2017.RobotMap;
@@ -12,7 +13,11 @@ import com.ctre.CANTalon;;
  *
  */
 public class RunMP extends Command {
-
+/*
+ * what is this for???
+ * TODO: ask team why this is here. Need to use the GeneratedMotionProfile.class
+ */
+	/*
 	public static double [][]LeftPoints = new double[][]{
 		{1.0, 0.4,1000},
 		{2.0, 0.4, 500},
@@ -32,9 +37,16 @@ public class RunMP extends Command {
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
-    MotionProfile MPLeft = new MotionProfile(RobotMap.driveLeftMotor1,LeftPoints);
-    MotionProfile MPRight = new MotionProfile(RobotMap.driveRightMotor1,RightPoints);
-		
+	
+    //TODO: Mitch: removed call to local double array, and redirected MotionProfile to the GeneratedMotionProfile.class
+	
+	
+	//MotionProfile MPLeft = new MotionProfile(RobotMap.driveLeftMotor1,LeftPoints);
+    //MotionProfile MPRight = new MotionProfile(RobotMap.driveRightMotor1,RightPoints);
+	//GeneratedMotionProfile
+	MotionProfile MPLeft = new MotionProfile(RobotMap.driveLeftMotor1,GeneratedMotionProfile.Points);
+    MotionProfile MPRight = new MotionProfile(RobotMap.driveRightMotor1,GeneratedMotionProfile.Points);
+	
 	public RunMP() {
     }
 
