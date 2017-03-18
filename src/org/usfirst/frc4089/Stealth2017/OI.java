@@ -84,9 +84,9 @@ public class OI {
         utilityStick = new Joystick(1);
         driveStick = new Joystick(0);
         
-        climbDown = new JoystickButton(utilityStick, 8);
-        climbDown.whileHeld(new ClimberDown());
-        climbUp = new JoystickButton(utilityStick, 9);
+        /*climbDown = new JoystickButton(utilityStick, 8);
+        climbDown.whileHeld(new ClimberDown());*/
+        climbUp = new JoystickButton(utilityStick, 8);
         climbUp.whileHeld(new ClimberUp());
         reverseCollector = new JoystickButton(utilityStick, 5);
         reverseCollector.whenPressed(new CollectorReverse());
@@ -96,22 +96,23 @@ public class OI {
         runCollector.whenPressed(new CollectorRun());
         stopEllevator = new JoystickButton(driveStick, 10);
         stopEllevator.whenPressed(new EllevatorStop());
-        runEllevator = new JoystickButton(driveStick, 8);
-        runEllevator.whenPressed(new EllevatorRun());
+        runEllevator = new JoystickButton(utilityStick, 9);
+        runEllevator.whileHeld(new EllevatorRun());
         reverseEllevator = new JoystickButton(driveStick, 12);
         reverseEllevator.whenPressed(new EllevatorReverse());
-        stopShooter = new JoystickButton(driveStick, 9);
+        stopShooter = new JoystickButton(utilityStick, 10);
         stopShooter.whenPressed(new ShooterStop());
-        runShooter = new JoystickButton(driveStick, 7);
+        runShooter = new JoystickButton(utilityStick, 11);
         runShooter.whenPressed(new ShooterRun());
         reverseShooter = new JoystickButton(driveStick, 11);
         reverseShooter.whenPressed(new ShooterReverse());
         automatedShooter = new JoystickButton(utilityStick, 1);
         automatedShooter.whenPressed(new AutomatedShooting());
-        shooterDoorOpen = new JoystickButton(utilityStick, 11);
+        /*shooterDoorOpen = new JoystickButton(utilityStick, 11);
         shooterDoorOpen.whenPressed(new ShooterDoorOpen());
         shooterDoorClose = new JoystickButton(utilityStick, 10);
         shooterDoorClose.whenPressed(new ShooterDoorClose());
+        */
         agitate = new JoystickButton(utilityStick, 2);
         agitate.whileHeld(new Agitate());
         blockOuterBarrels = new JoystickButton(utilityStick, 6);
