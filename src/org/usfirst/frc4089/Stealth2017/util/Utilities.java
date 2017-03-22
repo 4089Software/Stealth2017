@@ -9,7 +9,7 @@
 // it from being updated in the future.
 
 
-package org.usfirst.frc4089.Stealth2017.subsystems;
+package org.usfirst.frc4089.Stealth2017.util;
 
 import org.usfirst.frc4089.Stealth2017.RobotMap;
 import org.usfirst.frc4089.Stealth2017.commands.*;

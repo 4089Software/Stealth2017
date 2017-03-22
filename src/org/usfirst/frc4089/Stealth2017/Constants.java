@@ -10,7 +10,7 @@ public class Constants {
 	public static final double climber2Speed = 1;
 	public static final double rightSpeed = 1;
 	public static final double leftSpeed = .9;
-	public static final double curve = -0.2;//-0.1;
+	public static final double curve = 0;//-0.2;
 	public final static double kTolerance = 0.1;
 	public final static double kP = -1.0 / 5.0;
 	public final static double kI = -1.0 / 5.0;

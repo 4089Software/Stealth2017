@@ -1,13 +1,13 @@
 package org.usfirst.frc4089.Stealth2017.commands;
 
-import org.usfirst.frc4089.Stealth2017.GeneratedMotionProfile;
+import org.usfirst.frc4089.Stealth2017.MPPaths.*;
 import org.usfirst.frc4089.Stealth2017.Robot;
-import org.usfirst.frc4089.Stealth2017.subsystems.MotionProfile;
 import org.usfirst.frc4089.Stealth2017.RobotMap;
+import org.usfirst.frc4089.Stealth2017.MP.MotionProfile;
 
 import edu.wpi.first.wpilibj.command.Command;
-import com.ctre.CANTalon;;
-
+import com.ctre.CANTalon;
+import org.usfirst.frc4089.Stealth2017.MP.MotionProfile;
 
 /**
  *
@@ -44,33 +44,34 @@ public class RunMP extends Command {
 	//MotionProfile MPLeft = new MotionProfile(RobotMap.driveLeftMotor1,LeftPoints);
     //MotionProfile MPRight = new MotionProfile(RobotMap.driveRightMotor1,RightPoints);
 	//GeneratedMotionProfile
-	MotionProfile MPLeft = new MotionProfile(RobotMap.driveLeftMotor1,GeneratedMotionProfile.Points);
-    MotionProfile MPRight = new MotionProfile(RobotMap.driveRightMotor1,GeneratedMotionProfile.Points);
+	MotionProfile MPL = new MotionProfile(RobotMap.driveLeftMotor1);
+    MotionProfile MPR = new MotionProfile(RobotMap.driveRightMotor1);
 	
 	public RunMP() {
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	MPLeft.startMotionProfile();
-    	MPRight.startMotionProfile();
-    	MPLeft.MotionProfileStart();
-    	MPRight.MotionProfileStart();
+    	MPL.startMotionProfile();
+    	MPR.startMotionProfile();
+    	MPL.startMotionProfile();
+    	MPR.startMotionProfile();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 		/* call this periodically, and catch the output.  Only apply it if user wants to run MP. */
-    	MPLeft.control();
-    	MPRight.control();
+    	MPL.control();
+    	MPR.control();
 
     	RobotMap.driveLeftMotor1.changeControlMode(CANTalon.TalonControlMode.MotionProfile);
     	RobotMap.driveRightMotor1.changeControlMode(CANTalon.TalonControlMode.MotionProfile);
 		
-		CANTalon.SetValueMotionProfile setOutput = MPLeft.getSetValue();
+		CANTalon.SetValueMotionProfile setOutput = MPL.getSetValue();
+	
 		RobotMap.driveLeftMotor1.set(setOutput.value);
 
-		setOutput = MPRight.getSetValue();
+		setOutput = MPR.getSetValue();
 		RobotMap.driveRightMotor1.set(setOutput.value);
     }
 

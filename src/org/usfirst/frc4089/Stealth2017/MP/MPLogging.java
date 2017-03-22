@@ -22,10 +22,10 @@
  * 
  * 
  */
-package org.usfirst.frc4089.Stealth2017;
+package org.usfirst.frc4089.Stealth2017.MP;
 import com.ctre.CANTalon;
 
-public class instrumentation {
+public class MPLogging {
 
 	static double timeout = 0;
 	static int count = 0;

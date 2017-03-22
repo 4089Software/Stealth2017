@@ -21,22 +21,16 @@
  * [1] Calling pushMotionProfileTrajectory() continuously while the Talon executes the motion profile, thereby keeping it going indefinitely.
  * [2] Instead of setting the sensor position to zero at the start of each MP, the program could offset the MP's position based on current position. 
  */
-package org.usfirst.frc4089.Stealth2017.subsystems;
+package org.usfirst.frc4089.Stealth2017.MP;
 
-
-import org.usfirst.frc4089.Stealth2017.GeneratedMotionProfile;
-import org.usfirst.frc4089.Stealth2017.RobotMap;
-import org.usfirst.frc4089.Stealth2017.instrumentation;
+import org.usfirst.frc4089.Stealth2017.MPPaths.*;
 
 import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.Notifier;
-import edu.wpi.first.wpilibj.command.Subsystem;
-
 import com.ctre.CANTalon.TalonControlMode;
 
-public class MotionProfile extends Subsystem{
-	
-	
+public class MotionProfile{
+
 	/**
 	 * The status of the motion profile executer and buffer inside the Talon.
 	 * Instead of creating a new one every time we call getMotionProfileStatus,
@@ -48,7 +42,7 @@ public class MotionProfile extends Subsystem{
 	 * reference to the talon we plan on manipulating. We will not changeMode()
 	 * or call set(), just get motion profile status and make decisions based on
 	 * motion profile.
-	 */    
+	 */
 	private CANTalon _talon;
 	/**
 	 * State machine to make sure we let enough of the motion profile stream to
@@ -70,26 +64,6 @@ public class MotionProfile extends Subsystem{
 	 */
 	private boolean _bStart = false;
 
-	private double [][] _points;
-	
-	/**
-	 * C'tor
-	 * 
-	 * @param talon
-	 *            reference to Talon object to fetch motion profile status from.
-	 */
-	public MotionProfile(CANTalon talon, double [][] points) {
-		_talon = talon;
-		/*
-		 * since our MP is 10ms per point, set the control frame rate and the
-		 * notifer to half that
-		 */
-		_talon.changeMotionControlFramePeriod(5);
-		_notifer.startPeriodic(0.005);
-		_points = points;
-	}
-	
-	
 	/**
 	 * Since the CANTalon.set() routine is mode specific, deduce what we want
 	 * the set value to be and let the calling module apply it whenever we
@@ -128,18 +102,14 @@ public class MotionProfile extends Subsystem{
 	 * @param talon
 	 *            reference to Talon object to fetch motion profile status from.
 	 */
-	
-	//TODO update this so that it works
-	//public MotionProfileStart(CANTalon talon) {
-		//_talon = talon;
-	public void MotionProfileStart(){
+	public MotionProfile(CANTalon talon) {
+		_talon = talon;
 		/*
 		 * since our MP is 10ms per point, set the control frame rate and the
 		 * notifer to half that
 		 */
 		_talon.changeMotionControlFramePeriod(5);
 		_notifer.startPeriodic(0.005);
-		
 	}
 
 	/**
@@ -185,7 +155,7 @@ public class MotionProfile extends Subsystem{
 				 * something is wrong. Talon is not present, unplugged, breaker
 				 * tripped
 				 */
-				instrumentation.OnNoProgress();
+				MPLogging.OnNoProgress();
 			} else {
 				--_loopTimeout;
 			}
@@ -259,13 +229,14 @@ public class MotionProfile extends Subsystem{
 			}
 		}
 		/* printfs and/or logging */
-		instrumentation.process(_status);
+		MPLogging.process(_status);
 	}
 
 	/** Start filling the MPs to all of the involved Talons. */
 	private void startFilling() {
-		/* since this example only has one talon, just update that one */
-		startFilling(_points, _points.length);
+		//fill both R and L 
+		startFilling(AutoGearL.Points, AutoGearL.kNumPoints);
+		startFilling(AutoGearR.Points, AutoGearR.kNumPoints);
 	}
 
 	private void startFilling(double[][] profile, int totalCnt) {
@@ -276,7 +247,7 @@ public class MotionProfile extends Subsystem{
 		/* did we get an underrun condition since last time we checked ? */
 		if (_status.hasUnderrun) {
 			/* better log it so we know about it */
-			instrumentation.OnUnderrun();
+			MPLogging.OnUnderrun();
 			/*
 			 * clear the error. This flag does not auto clear, this way 
 			 * we never miss logging it.
@@ -327,14 +298,5 @@ public class MotionProfile extends Subsystem{
 	 */
 	public CANTalon.SetValueMotionProfile getSetValue() {
 		return _setValue;
-	}
-
-	@Override
-	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
-		RobotMap.driveLeftMotor1.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
-        RobotMap.driveRightMotor1.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
-      
-        
 	}
 }

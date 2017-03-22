@@ -41,8 +41,11 @@ public class UserDrive extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	/*need to exit Motion Profiling Mode when user is driving*/
-    	RobotMap.driveLeftMotor1.changeControlMode(TalonControlMode.Voltage);
-    	RobotMap.driveRightMotor1.changeControlMode(TalonControlMode.Voltage);
+    	//RobotMap.driveLeftMotor1.changeControlMode(TalonControlMode.Voltage);
+    	//RobotMap.driveRightMotor1.changeControlMode(TalonControlMode.Voltage);
+    	//RobotMap.driveLeftMotor2.changeControlMode(TalonControlMode.Voltage);
+    	//RobotMap.driveRightMotor2.changeControlMode(TalonControlMode.Voltage);
+
     	//TODO need to MPLeft.reset();
     }
 

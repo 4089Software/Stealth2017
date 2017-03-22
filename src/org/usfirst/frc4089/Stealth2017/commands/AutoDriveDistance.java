@@ -11,7 +11,7 @@ import org.usfirst.frc4089.Stealth2017.subsystems.Drive;
 import org.usfirst.frc4089.Stealth2017.subsystems.Ellevator;
 import org.usfirst.frc4089.Stealth2017.subsystems.Shooter;
 import org.usfirst.frc4089.Stealth2017.subsystems.ShooterDoor;
-import org.usfirst.frc4089.Stealth2017.subsystems.Utilities;
+import org.usfirst.frc4089.Stealth2017.util.Utilities;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;

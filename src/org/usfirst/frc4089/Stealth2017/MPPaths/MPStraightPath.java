@@ -1,6 +1,6 @@
 		
-package org.usfirst.frc4089.Stealth2017;			
-public class GeneratedMotionProfile {			
+package org.usfirst.frc4089.Stealth2017.MPPaths;			
+public class MPStraightPath {			
 	public static final int kNumPoints =185;		
 	// Position (rotations)	Velocity (RPM)	Duration (ms)
 	public static double [][]Points = new double[][]{	
