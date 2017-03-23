@@ -235,8 +235,11 @@ public class MotionProfile{
 	/** Start filling the MPs to all of the involved Talons. */
 	private void startFilling() {
 		//fill both R and L 
+		/*
 		startFilling(AutoGearL.Points, AutoGearL.kNumPoints);
-		startFilling(AutoGearR.Points, AutoGearR.kNumPoints);
+		startFilling(AutoGearR.Points, AutoGearR.kNumPoints);*/
+		startFilling(MPStraightPath.Points, MPStraightPath.kNumPoints);
+		
 	}
 
 	private void startFilling(double[][] profile, int totalCnt) {

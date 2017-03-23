@@ -220,7 +220,7 @@ public class Robot extends IterativeRobot {
 		 */
 		RobotMap.driveLeftMotor1.changeControlMode(TalonControlMode.MotionProfile);
 		RobotMap.driveRightMotor1.changeControlMode(TalonControlMode.MotionProfile);
-		
+		//RobotMap.driveLeftMotor2.changeControlMode(TalonControlMode.Follower);
 		CANTalon.SetValueMotionProfile setOutputR = MPR.getSetValue();
 		CANTalon.SetValueMotionProfile setOutputL = MPL.getSetValue();
 		

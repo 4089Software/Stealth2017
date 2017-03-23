@@ -67,12 +67,12 @@ public class RunMP extends Command {
     	RobotMap.driveLeftMotor1.changeControlMode(CANTalon.TalonControlMode.MotionProfile);
     	RobotMap.driveRightMotor1.changeControlMode(CANTalon.TalonControlMode.MotionProfile);
 		
-		CANTalon.SetValueMotionProfile setOutput = MPL.getSetValue();
+		CANTalon.SetValueMotionProfile setOutputL = MPL.getSetValue();
 	
-		RobotMap.driveLeftMotor1.set(setOutput.value);
+		RobotMap.driveLeftMotor1.set(setOutputL.value);
 
-		setOutput = MPR.getSetValue();
-		RobotMap.driveRightMotor1.set(setOutput.value);
+		CANTalon.SetValueMotionProfile setOutputR = MPR.getSetValue();
+		RobotMap.driveRightMotor1.set(setOutputR.value);
     }
 
     // Make this return true when this Command no longer needs to run execute()
