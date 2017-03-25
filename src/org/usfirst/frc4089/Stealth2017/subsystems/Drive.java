@@ -74,26 +74,27 @@ public class Drive extends Subsystem {
 		
 	}
 	public void driveF(){
-		rightMotor1.set(1);
-		rightMotor2.set(1);
-		leftMotor1.set(-.92);
-		leftMotor2.set(-.92);
+		System.out.println("driveF");
+		rightMotor1.set(.5);
+		rightMotor2.set(.5);
+		leftMotor1.set(.671);
+		leftMotor2.set(.671);
 	}
 	public void driveB(){
 		rightMotor1.set(-1);
 		rightMotor2.set(-1);
-		leftMotor1.set(1);
-		leftMotor2.set(1);
+		leftMotor1.set(-1);
+		leftMotor2.set(-1);
 	}
 	public void driveR(){
-		rightMotor1.set(1);
-		rightMotor2.set(1);
-		leftMotor1.set(1);
-		leftMotor2.set(1);
-	}
-	public void driveL(){
 		rightMotor1.set(-1);
 		rightMotor2.set(-1);
+		leftMotor1.set(.8);
+		leftMotor2.set(8);
+	}
+	public void driveL(){
+		rightMotor1.set(1);
+		rightMotor2.set(1);
 		leftMotor1.set(-1);
 		leftMotor2.set(-1);
 	}

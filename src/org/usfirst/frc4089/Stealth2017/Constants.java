@@ -50,5 +50,5 @@ public class Constants {
 	public final static double AutoGearAngS2 = 30; //deg
 	public final static double AutoGearDistS3 = 2; //feet
 	public final static double AutoGearAngRadS2 = 2; //feet of radius
-	public final static double AutoDriveFWTimed = 2; //sec
+	public final static double AutoDriveFWTimed = 2.25; //sec
 }
