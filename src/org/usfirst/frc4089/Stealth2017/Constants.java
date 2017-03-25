@@ -11,11 +11,18 @@ public class Constants {
 	public static final double rightSpeed = 1;
 	public static final double leftSpeed = .9;
 	public static final double curve = 0;//-0.2;
-	public final static double kTolerance = 0.1;
-	public final static double kP = -1.0 / 5.0;
-	public final static double kI = -1.0 / 5.0;
-	public final static double kD = -1.0 / 5.0;
-	public final static double defaultAutoSpeed = .75;
+
+	
+	//wheel info
+	public static final int wheelDiaIn = 6; //in
+	public static final double wheelCircIN = 6*Math.PI; //in
+	public static final double wheelCircFT = wheelCircIN/12;
+	
+	//encoders
+	public static final int E4TEncoderPulsePerRev = 1440;
+	public static final double encoderRightDistanceFTPerPulse = wheelCircFT/E4TEncoderPulsePerRev;
+	public static final double encoderLeftDistanceFTPerPulse = wheelCircFT/E4TEncoderPulsePerRev;
+
 	
 	//Motor IDs
 	public static final int rightMotor1SpeedControl = 6; //normally 6
@@ -32,4 +39,16 @@ public class Constants {
 	public static final int shooterDoorPort = 1;
 	public static final int RBarrelBlockerPort = 2;
 	public static final int LBarrelBlockerPort = 3;
+	
+	//autoconfig
+	public final static double kTolerance = 0.1;
+	public final static double kP = -1.0 / 5.0;
+	public final static double kI = -1.0 / 5.0;
+	public final static double kD = -1.0 / 5.0;
+	public final static double defaultAutoSpeed = .75;
+	public final static double AutoGearDistS1 = 5; //feet
+	public final static double AutoGearAngS2 = 30; //deg
+	public final static double AutoGearDistS3 = 2; //feet
+	public final static double AutoGearAngRadS2 = 2; //feet of radius
+	public final static double AutoDriveFWTimed = 2; //sec
 }

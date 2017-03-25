@@ -52,17 +52,18 @@ public class RunMP extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	MPL.startMotionProfile();
-    	MPR.startMotionProfile();
-    	MPL.startMotionProfile();
-    	MPR.startMotionProfile();
+    //	MPL.startMotionProfile();
+    //	MPR.startMotionProfile();
+    	System.out.println("RunMP init");
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 		/* call this periodically, and catch the output.  Only apply it if user wants to run MP. */
+    	//System.out.println("RunMP Execute");
     	MPL.control();
-    	MPR.control();
+    	//MPR.control();
 
     	RobotMap.driveLeftMotor1.changeControlMode(CANTalon.TalonControlMode.MotionProfile);
     	RobotMap.driveRightMotor1.changeControlMode(CANTalon.TalonControlMode.MotionProfile);
@@ -71,8 +72,30 @@ public class RunMP extends Command {
 	
 		RobotMap.driveLeftMotor1.set(setOutputL.value);
 
-		CANTalon.SetValueMotionProfile setOutputR = MPR.getSetValue();
-		RobotMap.driveRightMotor1.set(setOutputR.value);
+		//CANTalon.SetValueMotionProfile setOutputR = MPR.getSetValue();
+		//RobotMap.driveRightMotor1.set(setOutputR.value);
+		
+        // call this periodically, and catch the output.  Only apply it if user wants to run MP.
+  //      MPL.control();
+  //      MPR.control();
+        
+        /* switch to motion profile control mode => This is done in MotionProfileControl.
+		 * When we transition from no-press to press,
+		 * pass a "true" once to MotionProfileControl.
+		 */
+//		RobotMap.driveLeftMotor1.changeControlMode(TalonControlMode.MotionProfile);
+//		RobotMap.driveRightMotor1.changeControlMode(TalonControlMode.MotionProfile);
+		//RobotMap.driveLeftMotor2.changeControlMode(TalonControlMode.Follower);
+//		CANTalon.SetValueMotionProfile setOutputR = MPR.getSetValue();
+//		CANTalon.SetValueMotionProfile setOutputL = MPL.getSetValue();
+		
+//		RobotMap.driveLeftMotor1.set(setOutputL.value);
+//		RobotMap.driveRightMotor1.set(setOutputR.value);
+
+		//start Motion Profile
+		//MPR.startMotionProfile();
+		MPL.startMotionProfile();
+		
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -84,6 +107,10 @@ public class RunMP extends Command {
     protected void end() {
     	RobotMap.driveLeftMotor1.changeControlMode(CANTalon.TalonControlMode.Voltage);
     	RobotMap.driveRightMotor1.changeControlMode(CANTalon.TalonControlMode.Voltage);
+    	
+    	MPL.reset();
+    	//MPR.reset();
+    	System.out.println("RunMP end");
     }
 
     // Called when another command which requires one or more of the same

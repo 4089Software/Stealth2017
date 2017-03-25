@@ -12,6 +12,8 @@
 package org.usfirst.frc4089.Stealth2017.commands;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc4089.Stealth2017.Constants;
 import org.usfirst.frc4089.Stealth2017.Robot;
 
 /**
@@ -38,17 +40,18 @@ public class AutoDriveFTimed extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	this.setTimeout(Constants.AutoDriveFWTimed);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.drive.driveF();
-    	Timer.delay(2);
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true

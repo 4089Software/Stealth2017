@@ -23,6 +23,7 @@
  */
 package org.usfirst.frc4089.Stealth2017.MP;
 
+import org.usfirst.frc4089.Stealth2017.RobotMap;
 import org.usfirst.frc4089.Stealth2017.MPPaths.*;
 
 import com.ctre.CANTalon;
@@ -90,11 +91,18 @@ public class MotionProfile{
 	 * of your trajectory points.  So if they are firing every 20ms, you should call 
 	 * every 10ms.
 	 */
+	
 	class PeriodicRunnable implements java.lang.Runnable {
-	    public void run() {  _talon.processMotionProfileBuffer();    }
+	    public void run() {  
+	    	try {
+	    		//_talon.processMotionProfileBuffer();
+	    		RobotMap.driveLeftMotor1.processMotionProfileBuffer();
+	    	} catch (Exception e){
+	    		System.out.println(e);
+	    	}
+	    }
 	}
 	Notifier _notifer = new Notifier(new PeriodicRunnable());
-	
 
 	/**
 	 * C'tor
@@ -103,12 +111,22 @@ public class MotionProfile{
 	 *            reference to Talon object to fetch motion profile status from.
 	 */
 	public MotionProfile(CANTalon talon) {
+		
+		//TODO fix this
 		_talon = talon;
+		//_talon = RobotMap.driveLeftMotor1;
 		/*
 		 * since our MP is 10ms per point, set the control frame rate and the
 		 * notifer to half that
 		 */
-		_talon.changeMotionControlFramePeriod(5);
+		try {
+			_talon.changeMotionControlFramePeriod(5);
+		} catch (Exception e){
+			System.out.println("here");
+		}
+		
+		
+		//RobotMap.driveLeftMotor1.changeMotionControlFramePeriod(5);
 		_notifer.startPeriodic(0.005);
 	}
 
@@ -123,6 +141,8 @@ public class MotionProfile{
 		 * sitting in memory.
 		 */
 		_talon.clearMotionProfileTrajectories();
+		//RobotMap.driveLeftMotor1.clearMotionProfileTrajectories();
+		
 		/* When we do re-enter motionProfile control mode, stay disabled. */
 		_setValue = CANTalon.SetValueMotionProfile.Disable;
 		/* When we do start running our state machine start at the beginning. */
@@ -141,7 +161,7 @@ public class MotionProfile{
 	public void control() {
 		/* Get the motion profile status every loop */
 		_talon.getMotionProfileStatus(_status);
-
+		//RobotMap.driveLeftMotor1.getMotionProfileStatus(_status);
 		/*
 		 * track time, this is rudimentary but that's okay, we just want to make
 		 * sure things never get stuck.
@@ -177,6 +197,7 @@ public class MotionProfile{
 			 */
 			switch (_state) {
 				case 0: /* wait for application to tell us to start an MP */
+					//System.out.println("Case 0 - Don't Run MP - from MotionProfile.java line 200");
 					if (_bStart) {
 						_bStart = false;
 	
@@ -194,6 +215,7 @@ public class MotionProfile{
 						 * points
 						 */
 					/* do we have a minimum numberof points in Talon */
+					//System.out.println("Case 1 - Run MP - from MotionProfile.java line 217");
 					if (_status.btmBufferCnt > kMinPointsInTalon) {
 						/* start (once) the motion profile */
 						_setValue = CANTalon.SetValueMotionProfile.Enable;
@@ -208,6 +230,7 @@ public class MotionProfile{
 					 * timeout. Really this is so that you can unplug your talon in
 					 * the middle of an MP and react to it.
 					 */
+					//System.out.println("Case 2 - Hold point on MP - from MotionProfile.java line 233");
 					if (_status.isUnderrun == false) {
 						_loopTimeout = kNumLoopsTimeout;
 					}
@@ -234,6 +257,7 @@ public class MotionProfile{
 
 	/** Start filling the MPs to all of the involved Talons. */
 	private void startFilling() {
+		System.out.println("Start Filling Points");
 		//fill both R and L 
 		/*
 		startFilling(AutoGearL.Points, AutoGearL.kNumPoints);
@@ -273,6 +297,7 @@ public class MotionProfile{
 			point.velocityOnly = false; /* set true to not do any position
 										 * servo, just velocity feedforward
 										 */
+			//System.out.println("set velocityOnly to true");
 			point.zeroPos = false;
 			if (i == 0)
 				point.zeroPos = true; /* set this to true on the first point */

@@ -16,6 +16,7 @@ public class AutoTurn extends Command {
 
 	private double distanceRight;
 	private double distanceLeft;
+	private boolean turnDirection;
 
     public AutoTurn(double angle, double radius) {
         // Use requires() here to declare subsystem dependencies
@@ -34,10 +35,13 @@ public class AutoTurn extends Command {
     	
     	distanceRight = (float) (2 * Math.PI * radiusRight * (angle/360));
     	distanceLeft = (float) (2 * Math.PI * radiusLeft * (angle/360));
+    	
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -49,7 +53,7 @@ public class AutoTurn extends Command {
 			Robot.drive.tankDrive(Constants.defaultAutoSpeed, Constants.defaultAutoSpeed);
     	
 		} else {
-			Robot.drive.tankDrive(Constants.defaultAutoSpeed * Constants.kP * errorAvg, Constants.defaultAutoSpeed * Constants.kP * errorAvg);
+			Robot.drive.tankDrive(Constants.defaultAutoSpeed * Constants.kP * errorLeft, Constants.defaultAutoSpeed * Constants.kP * errorRight);
 		}
     }
 

@@ -47,8 +47,8 @@ public class AutoDriveDistance extends Command {
     protected void initialize() {
     	Robot.stopAuto = false;
     	Robot.drive.resetEncoders();
-    	setTimeout(3.0);
-    	System.out.println("AUTO-INIT");
+    	//setTimeout(3.0);
+    	System.out.println("AUTO-Drive-Dist-INIT");
     	
   
     	
@@ -98,17 +98,10 @@ public class AutoDriveDistance extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	/*stopAuto = true;
+    	
     	System.out.println("AUTO-END");
-    	Robot.drive.stop();
-    	Robot.drive = null;
-        Robot.collector = null;
-        Robot.shooter = null;
-        Robot.ellevator = null;
-        Robot.climber = null;
-        Robot.utilities = null;
-        Robot.shooterDoor = null;
-        Robot.autoOptions = null;*/
+    	//Robot.drive.stop();
+
     }
 
     // Called when another command which requires one or more of the same
