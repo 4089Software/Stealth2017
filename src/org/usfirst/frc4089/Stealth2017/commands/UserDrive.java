@@ -13,6 +13,7 @@ package org.usfirst.frc4089.Stealth2017.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc4089.Stealth2017.Robot;
 import org.usfirst.frc4089.Stealth2017.RobotMap;
+import org.usfirst.frc4089.Stealth2017.util.LogMech;
 
 import com.ctre.CANTalon.TalonControlMode;
 
@@ -47,26 +48,14 @@ public class UserDrive extends Command {
     	//RobotMap.driveRightMotor2.changeControlMode(TalonControlMode.Voltage);
 
     	//TODO need to MPLeft.reset();
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	/*
-    	System.out.print("Left Encoder: ");
-    	System.out.print(-RobotMap.driveLeftMotor1.getEncPosition());
-    	System.out.print(" Right Encoder ");
-    	System.out.println(RobotMap.driveRightMotor1.getEncPosition());
-    	System.out.print(" Right Encoder Velocity ");
-    	System.out.print(RobotMap.driveRightMotor1.getEncVelocity());
-    	System.out.print(" Left Encoder Velocity ");
-    	System.out.println(RobotMap.driveLeftMotor1.getEncVelocity());
-    	System.out.println("Angle" + RobotMap.digitalSPIGyro.getAngle());
-    	System.out.print("Rate" + RobotMap.digitalSPIGyro.getRate());
-    	*/
-    	/*System.out.print(" Right Encoder Pulse Width Velocity ");
-    	System.out.print(RobotMap.driveRightMotor1.getPulseWidthVelocity());
-    	System.out.print(" Left Encoder Pulse Width Velocity ");
-    	System.out.println(RobotMap.driveLeftMotor1.getPulseWidthVelocity());*/
+    	
+    	
+    	LogMech.logMe();
     	Robot.drive.operatorDrive(Robot.oi.getDriveStick());
     }
 

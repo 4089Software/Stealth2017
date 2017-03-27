@@ -26,10 +26,10 @@ public class AutoGoForwardFiveFeet extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	double distance = 5;
+    	double distance = 96; // in
     	
     	//addSequential(new GoForwardFiveFeet());
-    	addSequential(new AutoDriveDistance(distance));
+    	addSequential(new AutoDriveDistance(distance, distance));
     }
 }
 

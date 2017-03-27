@@ -11,6 +11,8 @@ import org.usfirst.frc4089.Stealth2017.subsystems.Drive;
 import org.usfirst.frc4089.Stealth2017.subsystems.Ellevator;
 import org.usfirst.frc4089.Stealth2017.subsystems.Shooter;
 import org.usfirst.frc4089.Stealth2017.subsystems.ShooterDoor;
+import org.usfirst.frc4089.Stealth2017.util.DriveMath;
+import org.usfirst.frc4089.Stealth2017.util.LogMech;
 import org.usfirst.frc4089.Stealth2017.util.Utilities;
 
 import edu.wpi.first.wpilibj.Timer;
@@ -31,26 +33,29 @@ public class AutoDriveDistance extends Command {
 	//public double distance;
 	private double distanceRight;
 	private double distanceLeft;
-	
+	private double powerLeft;
+	private double powerRight;
+	private double flipLeftEnc;
 	
 	/*public void stopAutos(){
 		stopAuto = true;
 	}*/
-    public AutoDriveDistance(double distance) {
+    public AutoDriveDistance(double distLeft, double distRight) {
         // Use requires() here to declare subsystem dependencies
     	requires(Robot.drive);
-    	distanceLeft = distance;
-    	distanceRight = distance;
+    	distanceLeft = distLeft;
+    	distanceRight = distRight;
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.stopAuto = false;
-    	Robot.drive.resetEncoders();
-    	//setTimeout(3.0);
     	System.out.println("AUTO-Drive-Dist-INIT");
+    	Robot.stopAuto = false;
+    	//Robot.drive.resetEncoders();
+    	//setTimeout(3.0);
     	
-  
+    	 
     	
     	/*Robot.drive = null;
         Robot.collector = null;
@@ -66,23 +71,32 @@ public class AutoDriveDistance extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	//if(timeSinceInitialized() < 3000){
-    	System.out.println("preauto??");
-	    if(Robot.stopAuto = true){System.out.println("exit"); return;}	
-    	errorLeft = distanceLeft + RobotMap.driveLeftMotor1.getEncPosition() / 1440;
-    	errorRight = distanceRight - RobotMap.driveRightMotor1.getEncPosition() / 1440;
+    	
+    	//System.out.println("Auto Drive Dist");
+	    //if(Robot.stopAuto = true){System.out.println("exit"); return;}	
+    	flipLeftEnc = 
+    	errorLeft = distanceLeft + DriveMath.calcDist(RobotMap.driveLeftMotor1.getEncPosition(), "IN");
+    	errorRight = distanceRight - DriveMath.calcDist(RobotMap.driveRightMotor1.getEncPosition(), "IN");
     	errorAvg = (errorLeft + errorRight)/2;
-    	System.out.println("AUTO");
-    	System.out.print("Left Encoder:");
-    	System.out.print(RobotMap.driveLeftMotor1.getEncPosition());
-    	System.out.print("Right Encoder");
-    	System.out.println(RobotMap.driveRightMotor1.getEncPosition());
-    	if (Constants.defaultAutoSpeed * Constants.kP * errorAvg >= Constants.defaultAutoSpeed) {
-			Robot.drive.tankDrive(Constants.defaultAutoSpeed, Constants.defaultAutoSpeed);
+    	
+    	if (Constants.autoFWSpdLeft * Constants.kP * errorLeft > Constants.autoFWSpdLeft) {
+			powerLeft = Constants.autoFWSpdLeft;
     	
 		} else {
-			Robot.drive.tankDrive(Constants.defaultAutoSpeed * Constants.kP * errorAvg, Constants.defaultAutoSpeed * Constants.kP * errorAvg);
+			powerLeft = 0;
+			System.out.println("Done Auto FW Left");
 		}
-	    	
+    	
+    	if (Constants.autoFWSpdRight * Constants.kP * errorAvg > Constants.autoFWSpdRight) {
+    		powerRight = Constants.autoFWSpdRight;
+    		
+    	
+		} else {
+			powerRight = 0;
+			System.out.println("Done Auto FW Right");
+		}
+    	Robot.drive.tankDrive(powerLeft, powerRight);
+    	LogMech.logMe();
 	    	//SmartDashboard.putNumber("Left Encoder", Robot.drive.leftEncoder.getDistance());
     	//}else{
     	//	end();
@@ -99,7 +113,7 @@ public class AutoDriveDistance extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	
-    	System.out.println("AUTO-END");
+    	System.out.println("AutoDriveDist - Complete");
     	//Robot.drive.stop();
 
     }

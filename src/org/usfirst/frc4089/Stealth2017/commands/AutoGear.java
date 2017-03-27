@@ -31,10 +31,12 @@ public class AutoGear extends CommandGroup {
 	    	
 	    	
 	    	//addSequential(new GoForwardFiveFeet());
-	    	addSequential(new AutoDriveDistance(Constants.AutoGearDistS1));
+	    	addSequential(new AutoDriveDistance(Constants.AutoGearDistS1, Constants.AutoGearDistS1));
+	    	//System.out.println("AutoGear - drive FW Complete");
 	    	addSequential(new AutoTurn(Constants.AutoGearAngS2,Constants.AutoGearAngRadS2));
-	    	addSequential(new AutoDriveDistance(Constants.AutoGearDistS3));
-	    	
+	    	//System.out.println("AutoGear - Turn Complete");
+	    	addSequential(new AutoDriveDistance(Constants.AutoGearDistS3, Constants.AutoGearDistS3));
+	    	System.out.println("AutoGear - Complete");
 	    }
 }
 

@@ -22,7 +22,8 @@ public class Constants {
 	public static final int E4TEncoderPulsePerRev = 1440;
 	public static final double encoderRightDistanceFTPerPulse = wheelCircFT/E4TEncoderPulsePerRev;
 	public static final double encoderLeftDistanceFTPerPulse = wheelCircFT/E4TEncoderPulsePerRev;
-
+	public static final double encoderConversionDisFT = wheelCircFT/E4TEncoderPulsePerRev; //FT/pulse
+	public static final double encoderConversionDisIN = wheelCircIN/E4TEncoderPulsePerRev; //FT/pulse
 	
 	//Motor IDs
 	public static final int rightMotor1SpeedControl = 6; //normally 6
@@ -42,13 +43,18 @@ public class Constants {
 	
 	//autoconfig
 	public final static double kTolerance = 0.1;
-	public final static double kP = -1.0 / 5.0;
+	public final static double kP = .88;//-1.0 / 5.0;
+	public final static double kPtr = .95; //kP for turn right
+	public final static double kPrl = .95; //kP for turn left
 	public final static double kI = -1.0 / 5.0;
 	public final static double kD = -1.0 / 5.0;
 	public final static double defaultAutoSpeed = .75;
-	public final static double AutoGearDistS1 = 5; //feet
+	public final static double AutoGearDistS1 = 92; //IN
 	public final static double AutoGearAngS2 = 30; //deg
-	public final static double AutoGearDistS3 = 2; //feet
+	public final static double AutoGearDistS3 = 60; //IN
 	public final static double AutoGearAngRadS2 = 2; //feet of radius
 	public final static double AutoDriveFWTimed = 2.25; //sec
+	public final static double autoFWSpdRight = 0.5;
+	public final static double autoFWSpdLeft = 0.5872;//0.671;
+
 }

@@ -105,11 +105,11 @@ public class Drive extends Subsystem {
 		leftMotor2.stopMotor();
 	}
 	
-	/*
+	/**
 	 * Tank drive is (left, right)
 	 */
 	public void tankDrive(double leftValue, double rightValue){
-		robotDrive41.tankDrive(-leftValue, rightValue);
+		robotDrive41.tankDrive(leftValue, -rightValue);
 	}
 	/*public void debugR1(){
 		leftMotor1.set(.2);

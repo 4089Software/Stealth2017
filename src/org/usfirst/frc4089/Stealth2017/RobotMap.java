@@ -81,7 +81,8 @@ public class RobotMap {
         
         driveLeftMotor1 = new CANTalon(Constants.left1MotorSpeedControl);
         LiveWindow.addActuator("Drive", "LeftMotor1", (CANTalon) driveLeftMotor1);
-        //driveLeftMotor1.reverseSensor(true);
+        driveLeftMotor1.reverseSensor(true); //this should flip the encoder - true = *-1 but doesn't work
+        
         driveLeftMotor1.setInverted(false);
         
         driveLeftMotor2 = new CANTalon(Constants.left2MotorSpeedControl);
