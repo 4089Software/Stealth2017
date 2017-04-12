@@ -23,7 +23,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.TalonSRX;
-
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
@@ -69,10 +69,41 @@ public class Drive extends Subsystem {
     	arcDrive(-DriveStick.getRawAxis(2), DriveStick.getRawAxis(1));
     	
     }
+    
 	private void arcDrive(double turn, double pow) {
 		robotDrive41.arcadeDrive(turn, pow + Constants.curve);
 		
 	}
+    /**
+    *
+    * @param drivestick
+    * @param utilitystick
+    */	
+	public void operatorTankDrive(Joystick joystick1, Joystick joystick2){
+        //inverts the motor drive for the connections to drive forward (when pickup is down)
+        //System.out.println("control FW");        
+        //robotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
+        //robotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
+        //robotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
+        //robotDrive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
+            
+        robotDrive41.tankDrive(joystick1, joystick2);
+	}
+    /**
+    *
+    * @param XboxAxisL
+    * @param XboxAxisR
+    */
+	public void operatorXBOXTankDrive(double XboxAxisL, double XboxAxisR){
+        //inverts the motor drive for the connections to drive forward (when pickup is down)
+        //System.out.println("control FW");        
+        //robotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
+        //robotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
+        //robotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
+        //robotDrive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
+            
+        robotDrive41.tankDrive(-XboxAxisR,XboxAxisL);
+	}    
 	public void driveF(){
 		System.out.println("driveF");
 		rightMotor1.set(.5);

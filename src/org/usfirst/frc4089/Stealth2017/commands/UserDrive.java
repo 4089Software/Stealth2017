@@ -10,6 +10,7 @@
 
 
 package org.usfirst.frc4089.Stealth2017.commands;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc4089.Stealth2017.Robot;
 import org.usfirst.frc4089.Stealth2017.RobotMap;
@@ -56,7 +57,8 @@ public class UserDrive extends Command {
     	
     	
     	LogMech.logMe();
-    	Robot.drive.operatorDrive(Robot.oi.getDriveStick());
+    	//Robot.drive.operatorDrive(Robot.oi.getDriveStick());
+    	Robot.drive.operatorXBOXTankDrive(Robot.oi.xboxController1.getY(Hand.kLeft), Robot.oi.xboxController1.getY(Hand.kRight));
     }
 
     // Make this return true when this Command no longer needs to run execute()
